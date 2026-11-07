@@ -1,0 +1,6 @@
+# Ignorar todo
+*
+
+# Excepto el prototipo y el propio .gitignore
+!.gitignore
+!prototipo-html.html
