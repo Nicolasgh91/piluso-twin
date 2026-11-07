@@ -4,3 +4,17 @@
 # Excepto el prototipo y el propio .gitignore
 !.gitignore
 !prototipo-html.html
+!README.md
+!package.json
+!package-lock.json
+!index.html
+!vite.config.ts
+!tsconfig.json
+!tsconfig.app.json
+!tsconfig.node.json
+!eslint.config.js
+!src/
+!src/**
+!.github/
+!.github/workflows/
+!.github/workflows/**

@@ -1,0 +1,43 @@
+import type { AppState, PackageItem, Supplier } from './types'
+
+export const DEMO_FX_ARS_PER_USD = 1180
+export const DEMO_FEE_RATE = 0.01
+
+const packages: PackageItem[] = [
+  { id: 'pkg-patagonia', name: 'Patagonia Explorer', origin: 'Buenos Aires', destination: 'El Calafate · El Chaltén', dates: '12–19 dic 2026', type: 'Aventura · Naturaleza', description: 'Una semana entre glaciares, lagos y senderos patagónicos, con una estadía cuidadosamente curada.', itinerary: ['Llegada a El Calafate y bienvenida', 'Navegación frente al glaciar Perito Moreno', 'Traslado panorámico a El Chaltén', 'Día de sendero hacia Laguna Capri', 'Experiencia de estancia patagónica', 'Regreso a El Calafate', 'Día libre y despedida'], services: ['7 noches de alojamiento boutique', 'Desayuno diario', 'Guía de montaña bilingüe'], flights: 'Aerolíneas Argentinas · vuelo directo', transfer: 'Privado AEP–hotel–aeropuerto', excursions: ['Navegación Glaciar Perito Moreno', 'Trekking Laguna Capri'], paxTotal: 18, seatsLeft: 11, currency: 'ARS', priceDouble: 1850000, priceSingle: 2290000, costs: 1280000, published: true, theme: 'patagonia' },
+  { id: 'pkg-iguazu', name: 'Iguazú Essential', origin: 'Buenos Aires', destination: 'Puerto Iguazú', dates: '05–09 ene 2027', type: 'Naturaleza · Escapada', description: 'Cinco días para descubrir la fuerza de las cataratas y la calma de la selva misionera.', itinerary: ['Llegada y paseo por el centro', 'Circuito superior e inferior', 'Gran Aventura por la selva', 'Día libre junto al río', 'Regreso a Buenos Aires'], services: ['4 noches en lodge de selva', 'Desayuno y cena', 'Entrada al Parque Nacional'], flights: 'Aerolíneas Argentinas · vuelo directo', transfer: 'Compartido aeropuerto–hotel', excursions: ['Cataratas lado argentino', 'Gran Aventura'], paxTotal: 20, seatsLeft: 16, currency: 'ARS', priceDouble: 890000, priceSingle: 1080000, costs: 610000, published: true, theme: 'iguazu' },
+  { id: 'pkg-atacama', name: 'Atacama Expedition', origin: 'Santiago', destination: 'San Pedro de Atacama', dates: '18–24 feb 2027', type: 'Aventura · Desierto', description: 'Paisajes de altura, salares y cielos profundos en el corazón del desierto más árido del mundo.', itinerary: ['Llegada a Calama y aclimatación', 'Valle de la Luna al atardecer', 'Lagunas altiplánicas y Piedras Rojas', 'Géiseres del Tatio al amanecer', 'Día de descanso en San Pedro', 'Observación astronómica', 'Regreso a Santiago'], services: ['6 noches en hotel de adobe', 'Desayuno diario', 'Guía local experto'], flights: 'LATAM · conexión vía Santiago', transfer: 'Privado Calama–San Pedro', excursions: ['Valle de la Luna', 'Lagunas altiplánicas', 'Géiseres del Tatio'], paxTotal: 12, seatsLeft: 8, currency: 'USD', priceDouble: 1840, priceSingle: 2290, costs: 1290, published: true, theme: 'desert' },
+  { id: 'pkg-rio', name: 'Rio de Janeiro Escape', origin: 'Buenos Aires', destination: 'Rio de Janeiro', dates: '03–08 mar 2027', type: 'Playa · Cultura', description: 'Unos días entre playas icónicas, miradores y la energía vibrante de Rio.', itinerary: ['Llegada a Rio y bienvenida', 'Corcovado y Santa Teresa', 'Día de playa en Ipanema', 'Pan de Azúcar al atardecer', 'Día libre para descubrir la ciudad', 'Regreso a Buenos Aires'], services: ['5 noches frente al mar', 'Desayuno buffet', 'Asistencia en destino'], flights: 'GOL · vuelo directo', transfer: 'Privado aeropuerto–hotel', excursions: ['Corcovado', 'Pan de Azúcar'], paxTotal: 16, seatsLeft: 9, currency: 'USD', priceDouble: 1320, priceSingle: 1680, costs: 890, published: true, theme: 'rio' },
+]
+
+const suppliers: Supplier[] = [
+  { id: 'sup-1', name: 'Austral Hospitality', service: 'Alojamiento', currency: 'ARS', destination: 'Patagonia', contact: 'operaciones@austral.tur.ar', cbu: '2850590940090418135201' },
+  { id: 'sup-2', name: 'Sur Andino Expediciones', service: 'Excursiones', currency: 'ARS', destination: 'Patagonia', contact: 'reservas@surandino.tur.ar', cbu: '2850590940090418135202' },
+  { id: 'sup-3', name: 'Selva Misionera Lodge', service: 'Alojamiento', currency: 'ARS', destination: 'Iguazú', contact: 'hola@selvamisionera.tur.ar', cbu: '2850590940090418135203' },
+  { id: 'sup-4', name: 'Desierto Vivo', service: 'Alojamiento', currency: 'USD', destination: 'Atacama', contact: 'stay@desiertovivo.cl', alias: 'desierto.vivo' },
+  { id: 'sup-5', name: 'Atacama Expeditions', service: 'Excursiones', currency: 'USD', destination: 'Atacama', contact: 'hola@atacamaexpeditions.cl', alias: 'atacama.exp' },
+  { id: 'sup-6', name: 'Casa Ipanema', service: 'Alojamiento', currency: 'USD', destination: 'Rio de Janeiro', contact: 'reservas@casaipe.com', alias: 'casa.ipanema' },
+]
+
+export const createInitialState = (): AppState => ({
+  role: 'owner', agencyName: 'Estudio Nómade', agencyCountry: 'Argentina', agencyEmail: 'hola@estudionomade.com', packages,
+  customers: [
+    { id: 'cus-1', name: 'Lucía Fernández', email: 'lucia.fernandez@email.com', phone: '+54 9 11 4567 8901', initials: 'LF', note: 'Prefiere viajes de naturaleza y hoteles pequeños.' },
+    { id: 'cus-2', name: 'Mateo Ríos', email: 'mateo.rios@email.com', phone: '+54 9 11 5632 1045', initials: 'MR', note: 'Viaja en pareja. Consulta por opciones de aventura.' },
+    { id: 'cus-3', name: 'Valentina Costa', email: 'valentina.costa@email.com', phone: '+54 9 11 3221 7788', initials: 'VC', note: 'Interesada en cultura local y escapadas cortas.' },
+    { id: 'cus-4', name: 'Tomás Benítez', email: 'tomas.benitez@email.com', phone: '+54 9 11 6100 2211', initials: 'TB', note: 'Tiene flexibilidad de fechas en febrero.' },
+  ], suppliers,
+  bookings: [
+    { id: 'book-1', ref: 'PLS-2048', customerId: 'cus-1', packageId: 'pkg-patagonia', pax: 2, tariff: 'double', amount: 3700000, currency: 'ARS', payment: 'Aprobado', status: 'Confirmada', agent: 'Sofía Méndez', createdAt: '2026-10-28', supplierIds: ['sup-1', 'sup-2'], history: ['Paquete confirmado', 'Pago recibido mediante Belo'], internalNotes: [] },
+    { id: 'book-2', ref: 'PLS-2051', customerId: 'cus-2', packageId: 'pkg-iguazu', pax: 2, tariff: 'double', amount: 1780000, currency: 'ARS', payment: 'Pendiente', status: 'Solicitada', agent: 'Nicolás Vidal', createdAt: '2026-11-05', supplierIds: ['sup-3'], history: ['Solicitud recibida'], internalNotes: [] },
+    { id: 'book-3', ref: 'PLS-2053', customerId: 'cus-3', packageId: 'pkg-rio', pax: 2, tariff: 'double', amount: 2640, currency: 'USD', payment: 'Pendiente', status: 'Solicitada', agent: 'Sofía Méndez', createdAt: '2026-11-06', supplierIds: ['sup-6'], history: ['Paquete compartido por WhatsApp'], internalNotes: [] },
+  ],
+  conversations: [
+    { id: 'conv-1', customerId: 'cus-2', channel: 'WhatsApp', packageId: 'pkg-iguazu', assigned: 'Nicolás Vidal', mode: 'Pili', status: 'Abierta', updated: 'Hace 12 min', messages: [ { id: 'm1', from: 'customer', text: 'Hola, queremos viajar a Iguazú en enero. ¿Qué opciones tienen para dos?', time: '10:42' }, { id: 'm2', from: 'pili', text: '¡Hola Mateo! Tenemos Iguazú Essential, una experiencia de 5 días con cataratas y excursiones. ¿Te gustaría ver el itinerario completo?', time: '10:43' }, { id: 'm3', from: 'customer', text: 'Sí, y también si hay lugar para las fechas del 5 de enero.', time: '10:51' } ] },
+    { id: 'conv-2', customerId: 'cus-1', channel: 'Web', packageId: 'pkg-patagonia', assigned: 'Sofía Méndez', mode: 'Agente', status: 'Abierta', updated: 'Ayer', messages: [ { id: 'm4', from: 'customer', text: '¿El trekking está incluido en el paquete?', time: '16:08' }, { id: 'm5', from: 'agent', text: '¡Hola Lucía! Sí, incluimos la caminata a Laguna Capri con guía local.', time: '16:24' } ] },
+  ],
+  supplierPayments: [ { id: 'sp-1', bookingId: 'book-1', supplierId: 'sup-1', concept: 'Alojamiento Patagonia · 7 noches', amount: 1620000, currency: 'ARS', destination: '2850590940090418135201', status: 'Pendiente' }, { id: 'sp-2', bookingId: 'book-1', supplierId: 'sup-2', concept: 'Excursiones y traslados', amount: 940000, currency: 'ARS', destination: '2850590940090418135202', status: 'Pendiente' } ],
+  transactions: [ { id: 'tx-1', date: '2026-10-28', kind: 'Cobro de viajero', detail: 'Patagonia Explorer · PLS-2048', amount: 3700000, currency: 'ARS', status: 'Aprobado', bookingId: 'book-1' }, { id: 'tx-2', date: '2026-10-28', kind: 'Comisión Piluso (1%)', detail: 'PLS-2048', amount: -37000, currency: 'ARS', status: 'Procesado', bookingId: 'book-1' } ],
+  notices: [ { id: 'n1', title: 'Nuevo interés en Iguazú', detail: 'Mateo Ríos consultó por fechas de enero.', time: '12 min', read: false }, { id: 'n2', title: 'Pago recibido', detail: 'Patagonia Explorer · PLS-2048', time: '9 días', read: true } ],
+  calls: [], balances: { ARS: 3663000, USD: 0 },
+})
